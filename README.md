@@ -1,11 +1,16 @@
 
-# FedAnil++: A Privacy-Preserving and Communication-Efficient Federated Deep Learning Model for Intelligent Enterprises
-<p align="justify">FedAnil++ is a Privacy-Preserving and Communication-Efficient Federated Deep Learning Model to address non-IID data, privacy concerns, and communication overhead. This repo hosts a simulation for FedAnil++ written in Python.</p>
+# FedAnil+++: A Robust and Privacy-Preserving Personalized Federated Learning Framework for Intelligent Enterprises
+
+<p align="justify">
+FedAnil+++ is a robust, privacy-preserving, and communication-efficient personalized federated learning framework designed for intelligent enterprise environments with heterogeneous non-IID data. The framework integrates adaptive gradient compression, CKKS-based homomorphic encryption, blockchain-assisted secure aggregation, similarity-aware validation, and adversarial personalization to improve robustness against poisoning and inference attacks while reducing communication and computational overhead. This repository provides the official Python-based simulation and implementation of FedAnil+++.
+</p>
 
 ## Introduction
-<p align="justify"> With the volume of data growing in enterprises, the traditional learning paradigm based on machine learning (ML) has given way to an emerging paradigm called federated deep learning (FDL). In FDL, in collaboration with local enterprises and the server, a model is trained without sending raw private data from local enterprises to the server. However, existing FDL-based approaches are vulnerable to attacks and violate privacy. Therefore, we propose FedAnil++, a novel Federated Deep Learning Model with three main phases to overcome this challenge. The goal of the first phase is to address the challenges of unbalanced and non-IID (Independent and Identically Distributed) data. The Privacy-preserving challenge is addressed in the second phase. Finally, in the third phase, a communication-efficient approach is proposed to reduce communication costs. </p>
+<p align="justify">
+Federated learning enables collaborative model training across enterprises without sharing raw private data. However, existing federated learning frameworks still suffer from privacy leakage, communication overhead, vulnerability to poisoning and inference attacks, and degraded performance under heterogeneous non-IID data distributions. To address these challenges, we propose FedAnil+++, a robust and privacy-preserving personalized federated learning framework for intelligent enterprises. The proposed framework consists of three main phases: (i) communication-efficient gradient compression, (ii) privacy-preserving and secure aggregation using CKKS-based homomorphic encryption, blockchain, and similarity-aware validation, and (iii) personalized adaptation for heterogeneous non-IID environments through clustering and adversarial learning.
+</p>
 
-For detailed explanations, please refer to the [*A Privacy-Preserving and Communication-Efficient Federated Deep Learning Model for Intelligent Enterprises*](https://ieeexplore.ieee.org/abstract/document/10128790).
+
 
 ## FedAnil++ Installation
 ## Requirements
@@ -126,12 +131,12 @@ Please see <i>main.py</i> for other argument options.
 
 ## Simulation Logs
 #### Examining the Logs
-<p align="justify"> While running, the program saves the simulation logs inside of the <i>log/\<execution_time\></i> folder. The logs are saved based on communication rounds. In the corresponding round folder, you may find the model accuracy evaluated by each enterprise using the global model at the end of each communication round. You may also find each worker's local training accuracy, the validation-accuracy-difference value of each validator, and the final stake rewarded to each enterprise in this communication round. You may also find the malicious enterprise's identification log outside the round folders. </p>
+<p align="justify"> While running, the program saves the simulation logs inside the <i>log/\<execution_time\></i> folder. The logs are saved per communication round. In the corresponding round folder, you may find the model accuracy evaluated by each enterprise using the global model at the end of each communication round. You may also find each worker's local training accuracy, the validation-accuracy difference for each validator, and the final stake awarded to each enterprise in this communication round. You may also find the malicious enterprise's identification log outside the round folders. </p>
 
 ## Issues
-<p align="justify"> If you use a GPU with a RAM of less than 16GB, you may encounter the issue of <b>CUDA out of memory</b>. This issue may be because the local model updates (i.e., neural network models) stored inside the blocks occupy the CUDA memory and cannot be automatically released because the memory taken in CUDA increases as the communication round progresses. A few solutions have been tried but have yet to be successful. </p>
+<p align="justify"> If you use a GPU with less than 16 GB of RAM, you may encounter the issue of <b>CUDA out of memory</b>. This issue may be due to local model updates (i.e., neural network models) stored in the blocks occupying CUDA memory and not being automatically released, as the memory used in CUDA increases with each communication round. A few solutions have been tried but have not been successful. </p>
 
-<p align="justify"> A temporary solution is to specify <b>-dtx 1</b>. This argument lets the program delete the transactions stored inside the last block to release the CUDA memory as much as possible. However, specifying <b>-dtx 1</b> will also turn off the chain-resyncing functionality as the resyncing process requires enterprises to reperform global model updates based on the transactions stored inside of the resynced chain, which has empty transactions in each block. As a result, using GPU should only emulate the situation that FedAnil++ runs in its most ideal situation; That is, every available transaction would be recorded inside the block of each round, as specified by the default arguments. </p>
+<p align="justify"> A temporary solution is to specify <b>-dtx 1</b>. This argument allows the program to delete the transactions stored in the last block to free as much CUDA memory as possible. However, specifying <b>-dtx 1</b> will also disable chain-resyncing functionality, as the resyncing process requires enterprises to reapply global model updates based on the transactions stored in the resynced chain, which contains empty transactions in each block. As a result, using a GPU should only emulate the situation in which FedAnil++ runs under its ideal conditions; that is, every available transaction would be recorded in the block of each round, as specified by the default arguments. </p>
 
 Use [GitHub issues](https://github.com/tensorflow/federated/issues) for tracking
 requests and bugs.
@@ -163,7 +168,7 @@ Please don't hesitate to raise any other issues and concerns you may have. Thank
 
 Email: Fotohi.reza@gmail.com
 
-Linkedin: https://www.linkedin.com/in/reza-fotohi-b433a169/
+LinkedIn: https://www.linkedin.com/in/reza-fotohi-b433a169/
 
 ## Acknowledgments
 (1) The code of the Blockchain Architecture used in FedAnil++ is inspired  [*Fully functional blockchain application implemented in Python from scratch*](https://github.com/satwikkansal/python_blockchain_app) by Satwik Kansal.
