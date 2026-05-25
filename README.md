@@ -12,7 +12,7 @@ Federated learning enables collaborative model training across enterprises witho
 
 
 
-## FedAnil++ Installation
+## FedAnil+++ Installation
 ## Requirements
 
 ### OS
@@ -41,8 +41,8 @@ cd FedAnilPlusPlusPlus
 
 #### Step 2: Create a new conda environment with Python 3.10
 ```
-conda create -n FedAnil++ python=3.10
-conda activate FedAnil++
+conda create -n FedAnil+++ python=3.10
+conda activate FedAnil+++
 ```
 
 #### Step 3: Install PyTorch and Jupyter
@@ -101,9 +101,9 @@ python3 main.py -nd 100 -max_ncomm 50 -ha 80,10,10 -aio 1 -pow 0 -ko 5 -nm 3 -vh
 
 <p align="justify"> <b>-ha 80,10,10</b>: Role assignment hard-assigned to 80 workers, 10 validators, and 10 miners for each communication round. A <b>*</b> in <b>-ha</b> means the corresponding number of roles is not limited. e.g., <b>-ha *,10,*</b> means at least 5 validators are assigned in each communication round, and the remaining enterprises are dynamically and randomly assigned to any role. <b>-ha *,*,*</b> means the role-assigning in each communication round is completely dynamic and random. </p>
 
-<p align="justify"> <b>-aio 1</b>: <i>aio</i> means "all in one network", namely, every enterprise in the simulation has every other enterprise in its peer list. This simulates FedAnil++ running on a Permissioned blockchain (consortium blockchain). If using <b>-aio 0</b>, the simulation will let an enterprise (registrant) randomly register with another enterprise (register) and copy the register's peer list. </p>
+<p align="justify"> <b>-aio 1</b>: <i>aio</i> means "all in one network", namely, every enterprise in the simulation has every other enterprise in its peer list. This simulates FedAnil+++ running on a Permissioned blockchain (consortium blockchain). If using <b>-aio 0</b>, the simulation will let an enterprise (registrant) randomly register with another enterprise (register) and copy the register's peer list. </p>
 
-<p align="justify"> <b>-pow 0</b>: The argument of <b>-pow</b> specifies the proof-of-work difficulty. When using 0, FedAnil++ runs with FedAnil++-PoS consensus to select the winning miner. </p>
+<p align="justify"> <b>-pow 0</b>: The argument of <b>-pow</b> specifies the proof-of-work difficulty. When using 0, FedAnil+++ runs with FedAnil+++-PoS consensus to select the winning miner. </p>
 
 <b>-ko 5</b>: This argument means an enterprise is blacklisted after it is identified as malicious after six consecutive rounds as a worker.
 
@@ -134,9 +134,9 @@ Please see <i>main.py</i> for other argument options.
 <p align="justify"> While running, the program saves the simulation logs inside the <i>log/\<execution_time\></i> folder. The logs are saved per communication round. In the corresponding round folder, you may find the model accuracy evaluated by each enterprise using the global model at the end of each communication round. You may also find each worker's local training accuracy, the validation-accuracy difference for each validator, and the final stake awarded to each enterprise in this communication round. You may also find the malicious enterprise's identification log outside the round folders. </p>
 
 ## Issues
-<p align="justify"> If you use a GPU with less than 16 GB of RAM, you may encounter the issue of <b>CUDA out of memory</b>. This issue may be due to local model updates (i.e., neural network models) stored in blocks that occupy CUDA memory and are not automatically released, as CUDA memory usage increases with each communication round. A few solutions have been tried but have not been successful. </p>
+<p align="justify"> If you use a GPU with less than 16 GB of RAM, you may encounter the issue of <b>CUDA out of memory</b>. This issue may be due to local model updates (e.g., neural network models) stored in blocks that occupy CUDA memory and are not automatically released, leading to increased CUDA memory usage with each communication round. A few solutions have been tried but have not been successful. </p>
 
-<p align="justify"> A temporary solution is to specify <b>-dtx 1</b>. This argument allows the program to delete the transactions stored in the last block to free as much CUDA memory as possible. However, specifying <b>-dtx 1</b> will also disable chain-resyncing functionality, as the resyncing process requires enterprises to reapply global model updates based on transactions stored in the resynced chain, which contains empty blocks. As a result, using a GPU should only emulate the situation in which FedAnil++ runs under its ideal conditions; that is, every available transaction would be recorded in the block of each round, as specified by the default arguments. </p>
+<p align="justify"> A temporary solution is to specify <b>-dtx 1</b>. This argument allows the program to delete the transactions stored in the last block, freeing as much CUDA memory as possible. However, specifying <b>-dtx 1</b> will also disable chain-resyncing functionality, as the resyncing process requires enterprises to reapply global model updates based on transactions stored in the resynced chain, which contains empty blocks. As a result, using a GPU should only emulate the situation in which FedAnil+++ runs under its ideal conditions; that is, every available transaction would be recorded in the block of each round, as specified by the default arguments. </p>
 
 Use [GitHub issues](https://github.com/tensorflow/federated/issues) for tracking
 requests and bugs.
@@ -171,8 +171,8 @@ Email: Fotohi.reza@gmail.com
 LinkedIn: https://www.linkedin.com/in/reza-fotohi-b433a169/
 
 ## Acknowledgments
-(1) The code of the Blockchain Architecture used in FedAnil++ is inspired  [*Fully functional blockchain application implemented in Python from scratch*](https://github.com/satwikkansal/python_blockchain_app) by Satwik Kansal.
+(1) The code of the Blockchain Architecture used in FedAnil+++ is inspired  [*Fully functional blockchain application implemented in Python from scratch*](https://github.com/satwikkansal/python_blockchain_app) by Satwik Kansal.
 
-(2) The code of the Validation and Consensus scheme used in FedAnil++ is inspired [*VBFL*](https://github.com/hanglearning/VBFL) by Hang Chen.
+(2) The code of the Validation and Consensus scheme used in FedAnil+++ is inspired [*VBFL*](https://github.com/hanglearning/VBFL) by Hang Chen.
 
 (3) The code of the FedAvg used in FedAnil is inspired [*WHDY's FedAvg implementation*](https://github.com/WHDY/FedAvg) by WHDY.
