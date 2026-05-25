@@ -35,8 +35,8 @@ Federated learning enables collaborative model training across enterprises witho
 
 #### Step 1: Download the repo
 ```
-git clone https://github.com/rezafotohi/FedAnilPlusPlus.git
-cd FedAnilPlusPlus
+git clone https://github.com/rezafotohi/FedAnilPlusPlusPlus.git
+cd FedAnilPlusPlusPlus
 ```
 
 #### Step 2: Create a new conda environment with Python 3.10
@@ -51,7 +51,7 @@ conda install pytorch torchvision torchaudio -c pytorch
 conda install -c conda-forge jupyter jupyterlab
 ```
 
-#### Step 4: Is the torch installed successfully or not? Enter the following commands in the terminal:
+#### Step 4: Is the torch installed successfully? Enter the following commands in the terminal:
 ```
 python3
 import torch
@@ -78,7 +78,7 @@ pip3 install bitarray
 pip3 install git+https://github.com/OpenMined/TenSEAL.git#egg=tenseal
 ```
 
-#### Step 9: Install Cmake
+#### Step 9: Install CMake
 On Windows and Linux:
 ```
 Download the latest CMake Mac binary distribution here: https://cmake.org/download/
@@ -88,7 +88,7 @@ On MacBooks with M1 processor:
 arch -arm64 brew install cmake
 ```
 
-#### Step 10: Run FedAnil++ Simulation
+#### Step 10: Run FedAnil+++ Simulation
 ```
 python3 main.py -nd 100 -max_ncomm 50 -ha 80,10,10 -aio 1 -pow 0 -ko 5 -nm 3 -vh 0.08 -cs 0 -B 64 -mn OARF -iid 0 -lr 0.01 -dtx 1 -le 20
 ```
@@ -99,7 +99,7 @@ python3 main.py -nd 100 -max_ncomm 50 -ha 80,10,10 -aio 1 -pow 0 -ko 5 -nm 3 -vh
 
 <b>-max_ncomm 50</b>: Maximum 50 communication rounds.
 
-<p align="justify"> <b>-ha 80,10,10</b>: Role assignment hard-assigned to 80 workers, 10 validators, and 10 miners for each communication round. A <b>*</b> in <b>-ha</b> means the corresponding number of roles is not limited. e.g., <b>-ha *,10,*</b> means at least 5 validators would be assigned in each communication round, and the rest of the enterprises are dynamically and randomly assigned to any role. <b>-ha *,*,*</b> means the role-assigning in each communication round is completely dynamic and random. </p>
+<p align="justify"> <b>-ha 80,10,10</b>: Role assignment hard-assigned to 80 workers, 10 validators, and 10 miners for each communication round. A <b>*</b> in <b>-ha</b> means the corresponding number of roles is not limited. e.g., <b>-ha *,10,*</b> means at least 5 validators are assigned in each communication round, and the remaining enterprises are dynamically and randomly assigned to any role. <b>-ha *,*,*</b> means the role-assigning in each communication round is completely dynamic and random. </p>
 
 <p align="justify"> <b>-aio 1</b>: <i>aio</i> means "all in one network", namely, every enterprise in the simulation has every other enterprise in its peer list. This simulates FedAnil++ running on a Permissioned blockchain (consortium blockchain). If using <b>-aio 0</b>, the simulation will let an enterprise (registrant) randomly register with another enterprise (register) and copy the register's peer list. </p>
 
@@ -134,25 +134,25 @@ Please see <i>main.py</i> for other argument options.
 <p align="justify"> While running, the program saves the simulation logs inside the <i>log/\<execution_time\></i> folder. The logs are saved per communication round. In the corresponding round folder, you may find the model accuracy evaluated by each enterprise using the global model at the end of each communication round. You may also find each worker's local training accuracy, the validation-accuracy difference for each validator, and the final stake awarded to each enterprise in this communication round. You may also find the malicious enterprise's identification log outside the round folders. </p>
 
 ## Issues
-<p align="justify"> If you use a GPU with less than 16 GB of RAM, you may encounter the issue of <b>CUDA out of memory</b>. This issue may be due to local model updates (i.e., neural network models) stored in the blocks occupying CUDA memory and not being automatically released, as the memory used in CUDA increases with each communication round. A few solutions have been tried but have not been successful. </p>
+<p align="justify"> If you use a GPU with less than 16 GB of RAM, you may encounter the issue of <b>CUDA out of memory</b>. This issue may be due to local model updates (i.e., neural network models) stored in blocks that occupy CUDA memory and are not automatically released, as CUDA memory usage increases with each communication round. A few solutions have been tried but have not been successful. </p>
 
-<p align="justify"> A temporary solution is to specify <b>-dtx 1</b>. This argument allows the program to delete the transactions stored in the last block to free as much CUDA memory as possible. However, specifying <b>-dtx 1</b> will also disable chain-resyncing functionality, as the resyncing process requires enterprises to reapply global model updates based on the transactions stored in the resynced chain, which contains empty transactions in each block. As a result, using a GPU should only emulate the situation in which FedAnil++ runs under its ideal conditions; that is, every available transaction would be recorded in the block of each round, as specified by the default arguments. </p>
+<p align="justify"> A temporary solution is to specify <b>-dtx 1</b>. This argument allows the program to delete the transactions stored in the last block to free as much CUDA memory as possible. However, specifying <b>-dtx 1</b> will also disable chain-resyncing functionality, as the resyncing process requires enterprises to reapply global model updates based on transactions stored in the resynced chain, which contains empty blocks. As a result, using a GPU should only emulate the situation in which FedAnil++ runs under its ideal conditions; that is, every available transaction would be recorded in the block of each round, as specified by the default arguments. </p>
 
 Use [GitHub issues](https://github.com/tensorflow/federated/issues) for tracking
 requests and bugs.
 
 ## Citation
 
-If you publish work that uses FedAnil++, please cite FedAnil++ as follows:
+If you publish work that uses FedAnil+++, please cite FedAnil+++ as follows:
 
 ```bibtex
-@article{2024FedAnil++,
-  title = {A Privacy-Preserving and Communication-Efficient Federated Deep Learning Model for Intelligent Enterprises},
+@article{2026FedAnil+++,
+  title = {Privacy-Preserving Personalized Federated Learning Against Poisoning and Inference Attacks in Intelligent Enterprises},
   author = {Reza Fotohi and Fereidoon Shams Aliee and Bahar Farahani},
   journal= {Under Review!},
   volume = {},
   pages = {},
-  year = {2024},
+  year = {2026},
   issn = {},
   doi = {},
   url = {},
